@@ -51,6 +51,7 @@ export class UserListComponent {
   }
 
   async updateUser(id: any) {
+    this.loadingService.setLoading(true)
     // const name = null;
     // await this.userService.updateUser(id,name);
     this.userId = id;
@@ -58,10 +59,13 @@ export class UserListComponent {
     console.log(this.userId);
     
     this.loadUsers();
+    this.loadingService.setLoading(false)
   }
 
   async deleteUser(id:any) {
+    this.loadingService.setLoading(true)
     await this.userService.deleteUser(id);
     this.loadUsers();
+    this.loadingService.setLoading(false)
   }
 }
