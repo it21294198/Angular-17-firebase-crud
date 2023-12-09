@@ -46,7 +46,7 @@ export class UserListComponent {
     this.loadingService.setLoading(true)
     const userData = { id:new Date().getTime() ,name: 'Doe', email: 'john.doe@example.com' }; // Customize based on your user schema
     await this.userService.createUser(userData);
-    this.loadUsers();
+    await this.loadUsers();
     this.loadingService.setLoading(false)
   }
 
