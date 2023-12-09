@@ -3,6 +3,13 @@
     <button (click)="createUser()">Create User</button>
 </div>
 
+<!-- your-component.component.html -->
+@if(loading){
+  <app-loading></app-loading>
+}
+
+<button (click)="setLoadingAlternate()">Set loading</button>
+
 @for (user of users; track user.name;let xid = $index) {
     <li> {{ user.name }} of {{ xid }}
       <button (click)="deleteUser(user.id)">Delete</button>
@@ -12,7 +19,7 @@
     <li> There are no items. </li>
   }
   
-  <app-user-update></app-user-update>
+  <app-user-update [id]="userId" (updateUserEvent)="updateUser($event)"></app-user-update>
   <!-- Error template -->
   <ng-template #errorTemplate>
     <p>An error occurred while loading the data.</p>

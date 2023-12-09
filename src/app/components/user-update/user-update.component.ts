@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output, booleanAttribute } from '@angular/core';
 
 @Component({
   selector: 'app-user-update',
@@ -8,16 +8,22 @@ import { Component, Input } from '@angular/core';
   styleUrl: './user-update.component.css'
 })
 export class UserUpdateComponent {
-  @Input() isOpen = false;
+  
+  @Input() id:number = 0;
+  @Input() isOpen:boolean = false;
+  @Output() updateUserEvent = new EventEmitter<number>();
+
+  isDialogOpen : boolean  = false
   
   closeDialog():void {
-    this.isOpen = false;
+    this.isDialogOpen= false;
   }
   updateUser() {
-  throw new Error('Method not implemented.');
+    console.log('updated id:',this.updateUserEvent);
+    
   }
-  isDialogOpen: any;
+
   openDialog() {
-  throw new Error('Method not implemented.');
+    this.isDialogOpen = true;
   }
 }

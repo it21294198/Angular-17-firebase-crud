@@ -1,6 +1,6 @@
 <p>user-update works!</p>
-<button (click)="openDialog()">Open Dialog</button>
-<dialog [attr.open]=false>
+<button (click)="openDialog()">Test Open Dialog</button>
+<dialog [open]="isDialogOpen">
   <!-- Your dialog content goes here -->
   <h2>Update User</h2>
   <label for="userName">User Name:</label>
