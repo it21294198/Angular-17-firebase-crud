@@ -2,13 +2,12 @@
 
 import { Injectable } from '@angular/core';
 import { FirebaseApp } from '@angular/fire/app';
-import { Firestore, addDoc, collection, getDocs, query } from '@angular/fire/firestore';
+import { Firestore, addDoc, collection, getDocs, query,doc,deleteDoc, where } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  
   
   private firebaseApp: FirebaseApp | undefined;
   private firestore: Firestore | undefined;
@@ -28,11 +27,26 @@ export class UserService {
     });
     return users;
   }
-
+  
   async deleteUser(id: any) {
-    throw new Error('Method not implemented.');
+    try {
+      const usersCollection = collection(this.firestore!, 'users');
+      const usersQuery = query(usersCollection, where('id', '==', id));
+      const querySnapshot = await getDocs(usersQuery);
+
+      querySnapshot.forEach(async (doc) => {
+        await deleteDoc(doc.ref);
+      });
+      console.log('user is deleted',id)
+    } catch (error) {
+      console.log(error)  
+    }
   }
   
+  async updateUser(id:any,name:any){
+
+  }
+
   async createUser(userData: any): Promise<void> {
     try {
       const usersCollection = collection(this.firestore!, 'users'); // Use '!' to assert non-nullability

@@ -1,1 +1,19 @@
 <p>user-list works!</p>
+<div>
+    <button (click)="createUser()">Create User</button>
+</div>
+
+@for (user of users; track user.name;let xid = $index) {
+    <li> {{ user.name }} of {{ xid }}
+      <button (click)="deleteUser(user.id)">Delete</button>
+      <button (click)="updateUser(user.id)">Update</button>
+    </li>
+  } @empty {
+    <li> There are no items. </li>
+  }
+  
+  <app-user-update></app-user-update>
+  <!-- Error template -->
+  <ng-template #errorTemplate>
+    <p>An error occurred while loading the data.</p>
+  </ng-template>

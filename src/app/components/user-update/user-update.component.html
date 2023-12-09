@@ -1,1 +1,14 @@
 <p>user-update works!</p>
+<button (click)="openDialog()">Open Dialog</button>
+<dialog [attr.open]=false>
+  <!-- Your dialog content goes here -->
+  <h2>Update User</h2>
+  <label for="userName">User Name:</label>
+  <!-- <input type="text" id="userName" [(ngModel)]="userToUpdate.name" /> -->
+
+  <label for="userEmail">User Email:</label>
+  <!-- <input type="text" id="userEmail" [(ngModel)]="userToUpdate.email" /> -->
+
+  <!-- <button (click)="updateUser()">Update User</button> -->
+  <button (click)="closeDialog()">Close</button>
+</dialog>

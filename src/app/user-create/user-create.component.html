@@ -1,15 +1,1 @@
 <p>user-create works!</p>
-<div>
-    <button (click)="createUser()">Create User</button>
-</div>
-
-@for (user of users; track user.name) {
-    <li> {{ user.name }} <button (click)="deleteUser(user.id)">Delete</button></li>
-  } @empty {
-    <li> There are no items. </li>
-  }
-  
-  <!-- Error template -->
-  <ng-template #errorTemplate>
-    <p>An error occurred while loading the data.</p>
-  </ng-template>
